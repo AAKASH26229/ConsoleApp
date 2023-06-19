@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author parat
+ *
+ */
+module Merchandies {
+}
