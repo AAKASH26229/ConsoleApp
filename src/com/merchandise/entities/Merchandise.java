@@ -51,5 +51,12 @@ public class Merchandise {
 		return errors.toArray(new String[0]);
 		
 	}
+	
+	public void printInfo() {
+		System.out.println("Partner Id: " + partnerId);
+		System.out.println("Partner Name: " + partnerName);
+		System.out.println("City: " + City);
+		System.out.println("State: " + StateProperties);
+	}
 
 }
