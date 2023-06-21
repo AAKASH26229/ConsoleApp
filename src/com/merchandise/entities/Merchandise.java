@@ -33,19 +33,15 @@ public class Merchandise {
 		List<String> errors = new ArrayList<>();
 		
 		if( partnerId > 0 && partnerId != 0 ) {
-			
 			errors.add("Partner Id is mandatory and must be a positive number");
 		}
 		else if( partnerName != null && partnerName.length() >= 5 ) {
-			
 			errors.add("Partner Name is mandatory and have minimum 5 characters");
 		}
 		else if( City != null && City.length() >= 3 ) {
-			
 			errors.add("City is mandatory and have minimum 3 characters");
 		}
 		else if( StateProperties != null && StateProperties.length() >= 3) {
-			
 			errors.add("State is mandatory and have minimum 3 characters");
 		}
 		return errors.toArray(new String[0]);
