@@ -8,11 +8,11 @@ import java.util.regex.Pattern;
 public class Supplier extends Merchandise{
 
 	//For Supplier class: CreditBalance, DrivingLicenseNumber
-	double CreditBalance;
-	long DrivingLicenseNumber;
+	private double CreditBalance;
+	private String DrivingLicenseNumber;
 	
 	
-	public Supplier(double creditBalance, long drivingLicenseNumber) {
+	public Supplier(double creditBalance, String drivingLicenseNumber) {
 		super();
 		CreditBalance = creditBalance;
 		DrivingLicenseNumber = drivingLicenseNumber;
@@ -63,12 +63,19 @@ public class Supplier extends Merchandise{
 		if( CreditBalance <= 175000 ) {
 			error.add("Credit Balance not exceed 1,75,000.");
 		}
-		else if()
+		else if(!isValidLicenseNo(DrivingLicenseNumber)) {
+			error.add("Enter Valid Driving License Number.");
+		}
 
-		return null;
+		return error.toArray(new String[0]);
 		
 	}
 	
+		@Override
+		public void printInfo() {
+			System.out.println("Credit Balance: "+CreditBalance);
+			System.out.println("Driving License Number: "+DrivingLicenseNumber);
+		}
 	
 }
 

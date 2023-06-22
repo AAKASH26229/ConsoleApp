@@ -7,7 +7,7 @@ public class Merchandise {
 
 	//class “Merchandise” with partnerId, partnerName, City, State properties
 	
-	protected int partnerId;
+	public int partnerId;
 	protected String partnerName;
 	protected String City;
 	protected String StateProperties;
