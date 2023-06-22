@@ -12,9 +12,10 @@ public class Customer extends Merchandise {
 	private String phoneNumber;
 	private String email;
 	
-	
-	public Customer(int creditLimit, String phoneNumber, String email) {
-		super();
+
+	public Customer(int partnerId, String partnerName, String City, String StateProperties,
+			int creditLimit, String phoneNumber, String email) {
+		super(partnerId, partnerName, City, StateProperties);
 		this.creditLimit = creditLimit;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
@@ -29,33 +30,33 @@ public class Customer extends Merchandise {
 	
 	@Override
 	public String[] Validate() {
-		List<String> error = new ArrayList<>();
+		List<String> errors = new ArrayList<>();
 		
-//		List<String> email = new ArrayList<>();
 		
-//		   // Invoke base class validation
-//        String[] baseValidationErrors = super.Validate();
-//        for (String error : baseValidationErrors) {
-//            errors.add(error);
-//        }
+		   // Invoke base class validation
+        String[] baseValidationErrors = super.Validate();
+        for (String error : baseValidationErrors) {
+            errors.add(error);
+        }
 		
 		if( creditLimit > 50000 ) {
-			error.add("Credit Limit should not be greater than 50,000.");
+			errors.add("Credit Limit should not be greater than 50,000.");
 		}
-		else if( phoneNumber.length() == 10 ) {
-			error.add("Phone Number must have 10 digits.");
+		else if( phoneNumber.length() != 10 ) {
+			errors.add("Phone Number must have 10 digits.");
 		}
 		
 		else if(!isValidEmail(email)) {
-			error.add("Enter valid email address.");
+			errors.add("Enter valid email address.");
 		}
 		
-		return error.toArray(new String[0]);
+		return errors.toArray(new String[0]);
 		
 	}
 	
 	@Override
 	public void printInfo() {
+		super.printInfo();
 		System.out.println("Credit Limit: " + creditLimit);
         System.out.println("Phone Number: " + phoneNumber);
         System.out.println("Email: " + email);

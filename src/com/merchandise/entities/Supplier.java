@@ -8,12 +8,13 @@ import java.util.regex.Pattern;
 public class Supplier extends Merchandise{
 
 	//For Supplier class: CreditBalance, DrivingLicenseNumber
-	private double CreditBalance;
+	private int CreditBalance;
 	private String DrivingLicenseNumber;
 	
 	
-	public Supplier(double creditBalance, String drivingLicenseNumber) {
-		super();
+	public Supplier(int partnerId, String partnerName, String City, String StateProperties,
+            int creditBalance, String drivingLicenseNumber) {
+		super(partnerId, partnerName, City, StateProperties);
 		CreditBalance = creditBalance;
 		DrivingLicenseNumber = drivingLicenseNumber;
 	}
@@ -26,8 +27,8 @@ public class Supplier extends Merchandise{
         // Regex to check valid
         // Indian driving license number
         String regex = "^(([A-Z]{2}[0-9]{2})"
-                       + "( )|([A-Z]{2}-[0-9]"
-                       + "{2}))((19|20)[0-9]"
+                       + "( ))"
+                       + "((19|20)[0-9]"
                        + "[0-9])[0-9]{7}$";
  
         // Compile the ReGex
@@ -52,27 +53,28 @@ public class Supplier extends Merchandise{
 		
 		@Override
 		public String[] Validate() {
-		List<String> error = new ArrayList<>();
+		List<String> errors = new ArrayList<>();
 		
-//		   // Invoke base class validation
-//        String[] baseValidationErrors = super.Validate();
-//        for (String error : baseValidationErrors) {
-//            errors.add(error);
-//        }
+		   // Invoke base class validation
+        String[] baseValidationErrors = super.Validate();
+        for (String error : baseValidationErrors) {
+            errors.add(error);
+        }
 		
-		if( CreditBalance <= 175000 ) {
-			error.add("Credit Balance not exceed 1,75,000.");
+		if( CreditBalance >  175000 ) {
+			errors.add("Credit Balance not exceed 1,75,000.");
 		}
 		else if(!isValidLicenseNo(DrivingLicenseNumber)) {
-			error.add("Enter Valid Driving License Number.");
+			errors.add("Enter Valid Driving License Number.");
 		}
 
-		return error.toArray(new String[0]);
+		return errors.toArray(new String[0]);
 		
 	}
 	
 		@Override
 		public void printInfo() {
+			super.printInfo();
 			System.out.println("Credit Balance: "+CreditBalance);
 			System.out.println("Driving License Number: "+DrivingLicenseNumber);
 		}
