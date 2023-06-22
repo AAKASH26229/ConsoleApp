@@ -28,8 +28,7 @@ public class Supplier extends Merchandise{
         // Indian driving license number
         String regex = "^(([A-Z]{2}[0-9]{2})"
                        + "( ))"
-                       + "((19|20)[0-9]"
-                       + "[0-9])[0-9]{7}$";
+                       + "[0-9]{11}$";
  
         // Compile the ReGex
         Pattern p = Pattern.compile(regex);
