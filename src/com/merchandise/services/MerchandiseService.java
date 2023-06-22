@@ -40,7 +40,7 @@ public class MerchandiseService {
 		suppliers.add(sup);
 	}
 	
-	
+	// Return list of suppliers
 	public List<Supplier> GetAllSuppliers(){
 		return suppliers;
 	}
