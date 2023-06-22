@@ -29,7 +29,10 @@ public class MerchandiseService {
 	
 	// Return customer by customerId
 	public Customer GetCustomerById(int customerid) {
-		return customers.stream().filter(cust -> cust.partnerId == customerid).findFirst().orElse(null);
+		return customers.stream()
+				.filter(cust -> cust.partnerId == customerid)
+				.findFirst()
+				.orElse(null);
 	}
 	
 	// Saving supplier Details
@@ -37,5 +40,17 @@ public class MerchandiseService {
 		suppliers.add(sup);
 	}
 	
+	
+	public List<Supplier> GetAllSuppliers(){
+		return suppliers;
+	}
+	
+	// Return supplier by supplierId
+	public Supplier GetSupplierById(int supplierid) {
+		return suppliers.stream()
+				.filter(sup -> sup.partnerId == supplierid)
+				.findFirst()
+				.orElse(null);
+	}
 	
 }
